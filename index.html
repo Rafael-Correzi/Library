@@ -29,33 +29,32 @@
           <span>Título</span>
           <strong><span aria-label="required">*</span></strong>
         </label>
-        <input id="titulo" type="text" required>
+        <input id="titulo" type="text" name="titulo" required>
       </li>
       <li>
         <label for="autor">
           <span>Autor</span>
           <strong><span aria-label="required">*</span></strong>
         </label>
-        <input id="autor" type="text" required>
+        <input id="autor" type="text" name="autor" required>
       </li>
       <li>
         <label for="n-paginas">
           <span>Número de páginas</span>
           <strong><span aria-label="required">*</span></strong>
         </label>
-        <input id="n-paginas" type="tel" required max="10000">
+        <input id="paginas" type="number" name="paginas" max="10000" required>
       </li>
     </ul>
     <fieldset>
       <legend>Estado de leitura
         <span aria-label="required">*</span>
       </legend>
-      <div>
-        <input id="lido" type="radio" name="estado" required>
+        <input id="sim-lido" type="radio" name="estado" value="1" required>
         <label for="lido">Lido</label>
-      <div>
-        <input id="nao-lido" type="radio" name="estado">
+        <input id="nao-lido" type="radio" name="estado" value="0">
         <label for="nao-lido">Não lido</label> 
+      </div>
     </fieldset>
   </form>
   <button type="submit" form="form-livro" class="novo-livro">Novo livro</button>
