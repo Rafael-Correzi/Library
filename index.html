@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Library</title>
   <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <table>
@@ -20,6 +21,43 @@
 
     </tbody>
   </table>
-  <button class="novo-livro">Novo livro</button>
+  <form id="form-livro" action="" method="post">
+    <p>Insira as informações do seu livro</p>
+    <ul>
+      <li>
+        <label for="titulo">
+          <span>Título</span>
+          <strong><span aria-label="required">*</span></strong>
+        </label>
+        <input id="titulo" type="text" required>
+      </li>
+      <li>
+        <label for="autor">
+          <span>Autor</span>
+          <strong><span aria-label="required">*</span></strong>
+        </label>
+        <input id="autor" type="text" required>
+      </li>
+      <li>
+        <label for="n-paginas">
+          <span>Número de páginas</span>
+          <strong><span aria-label="required">*</span></strong>
+        </label>
+        <input id="n-paginas" type="tel" required max="10000">
+      </li>
+    </ul>
+    <fieldset>
+      <legend>Estado de leitura
+        <span aria-label="required">*</span>
+      </legend>
+      <div>
+        <input id="lido" type="radio" name="estado" required>
+        <label for="lido">Lido</label>
+      <div>
+        <input id="nao-lido" type="radio" name="estado">
+        <label for="nao-lido">Não lido</label> 
+    </fieldset>
+  </form>
+  <button type="submit" form="form-livro" class="novo-livro">Novo livro</button>
 </body>
 </html>
