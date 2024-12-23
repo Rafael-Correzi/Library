@@ -1,7 +1,7 @@
-const table = document.querySelector(".livros");
+const estante = document.querySelector(".estante");
 const lib = [];
-const tr = [];
-const td = [];
+const div = [];
+const p = [];
 const buttonR = [];
 const buttonLido = [];
 
@@ -25,30 +25,32 @@ Book.prototype.addBookToLib = function (){
 function traverseLib(tamanho = 0) {
   //O parâmetro tamanho existe para quando a função for chamada no envio do formulário
   for (i = tamanho; i < lib.length; i++){
-    tr[i] = document.createElement("tr");
+    div[i] = document.createElement("div");
+    div[i].setAttribute("class", "livros");
     buttonR[i] = document.createElement("button");
     buttonLido[i] = document.createElement("button");
     buttonR[i].setAttribute("type", "button");
     buttonLido[i].setAttribute("type", "button");
     buttonR[i].textContent = "Remover";
-    table.appendChild(tr[i]);
-    td[i] = [];
+    estante.appendChild(div[i]);
+    p[i] = [];
     for (j = 0; j < 4; j++) {
       //Porque cada livro tem quatro atributos
-      td[i][j] = document.createElement("td");
-      console.log(tr[i]);
-      console.log(td[i][j]);
-      tr[i].appendChild((td[i][j]));
+      p[i][j] = document.createElement("p");
+      console.log(div[i]);
+      console.log(p[i][j]);
+      div[i].appendChild((p[i][j]));
     }
-    td[i][0].textContent = lib[i].titulo;
-    td[i][1].textContent = lib[i].autor;
-    td[i][2].textContent = lib[i].paginas;
-    td[i][3].textContent = lib[i].lido ? "Lido" : "Não lido";
+    p[i][0].textContent = lib[i].titulo;
+    p[i][1].textContent = lib[i].autor;
+    p[i][2].textContent = lib[i].paginas + " páginas";
+    p[i][3].textContent = lib[i].lido ? "Lido" : "Não lido";
     buttonLido[i].textContent = lib[i].lido ? "Trocar para não lido" : "Trocar para lido";
-    tr[i].appendChild(buttonLido[i]);
-    tr[i].appendChild(buttonR[i]);
+    div[i].appendChild(buttonLido[i]);
+    div[i].appendChild(buttonR[i]);
     removerLivros(i);
     trocarEstado(i);
+    exibir(i);
   }
 }
 
@@ -70,18 +72,29 @@ function removerLivros(indice) {
   buttonR[indice].addEventListener("click", () => {
     lib.splice(indice, 1);
     buttonR.splice(indice, 1);
-    td.splice(indice, 1);
-    tr[indice].remove();
-    tr.splice(indice, 1);
+    p.splice(indice, 1);
+    div[indice].remove();
+    div.splice(indice, 1);
   })
 }
 
 function trocarEstado(indice) {
   buttonLido[indice].addEventListener("click", () => {
     lib[indice].lido = lib[indice].lido ? 0 : 1;
-    td[indice][3].textContent = lib[indice].lido ? "Lido" : "Não lido";
+    p[indice][3].textContent = lib[indice].lido ? "Lido" : "Não lido";
   })
 }
+
+function exibir(indice) {
+  div[indice].addEventListener("mouseover", () => {
+    div[indice].style.width = "150px";
+    p[indice][0].style.writingMode = "horizontal-tb"
+    p[indice].forEach((e) => {
+      e.style.display = "inline";
+    });
+  })
+}
+
 
 
 traverseLib();

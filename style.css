@@ -1,3 +1,59 @@
+@font-face {
+  font-family: 'montserratthin';
+  src: url('fonts/montserrat-variablefont_wght-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+:root{
+  font-family: 'montserratthin', system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; ;
+}
+
+body {
+  background-color: white;
+}
+h1 {
+  font-size: 50px;
+  text-align: center;
+}
 label {
   display: block;
 }
+
+.estante {
+  width: 1000px;
+  background-color: #3f1111;
+  margin: 0 auto;
+  border: solid 5px #3f1111;
+  border-radius: 2px;
+  color: #2AA5A5;
+}
+
+.estante button {
+  display: none;
+}
+
+.livros {
+  display: inline-flex;
+  flex-direction: column;
+  margin: 5px 2px;
+  background-color: lightgray;
+  width: 30px;
+  height: 220px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+.livros>p:nth-last-of-type(-n + 4) {
+  display: none;
+}
+
+.livros>p:nth-of-type(1) {
+  display: inline-block;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+}
+
