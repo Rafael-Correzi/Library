@@ -22,12 +22,13 @@ label {
 }
 
 .estante {
-  width: 1000px;
+  display: flex;
+  width: 700px;
   background-color: #3f1111;
   margin: 0 auto;
   border: solid 5px #3f1111;
   border-radius: 2px;
-  color: #2AA5A5;
+  flex-wrap: wrap;
 }
 
 .estante button {
@@ -39,21 +40,16 @@ label {
   flex-direction: column;
   margin: 5px 2px;
   background-color: lightgray;
-  width: 30px;
+  flex-basis: 22%;
   height: 220px;
   justify-content: center;
   align-items: center;
   text-align: center;
+  align-self: center;
+  border-width: 8px;
+  border-style: solid;
+  font-weight: 700;
 
 }
 
-.livros>p:nth-last-of-type(-n + 4) {
-  display: none;
-}
-
-.livros>p:nth-of-type(1) {
-  display: inline-block;
-  writing-mode: vertical-lr;
-  text-orientation: mixed;
-}
 

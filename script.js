@@ -7,6 +7,9 @@ const buttonLido = [];
 
 
 let livro;
+let corR;
+let corG;
+let corB;
 
 const form = document.querySelector("#form-livro");
 
@@ -50,7 +53,7 @@ function traverseLib(tamanho = 0) {
     div[i].appendChild(buttonR[i]);
     removerLivros(i);
     trocarEstado(i);
-    exibir(i);
+    adicionarCor(i);
   }
 }
 
@@ -85,15 +88,17 @@ function trocarEstado(indice) {
   })
 }
 
-function exibir(indice) {
-  div[indice].addEventListener("mouseover", () => {
-    div[indice].style.width = "150px";
-    p[indice][0].style.writingMode = "horizontal-tb"
-    p[indice].forEach((e) => {
-      e.style.display = "inline";
-    });
-  })
+function adicionarCor(indice) {
+  corR = Math.floor(Math.random()*256 + 120);
+  corG = Math.floor(Math.random()*256 + 120);
+  corB = Math.floor(Math.random()*256 + 120);
+  div[indice].style.backgroundColor = `rgb(${corR},${corG},${corB})`;
+  console.log(`rgb(${corR},${corG},${corB})`  );
+  div[indice].style.borderColor = `rgb(${255-corR},${255-corG},${255-corB})`;
+  div[indice].style.color = `rgb(${255-corR},${255-corG},${255-corB})`;
 }
+
+
 
 
 
