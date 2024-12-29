@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="container-lado" id="test">
-      <button type="button" class="mostrar"></button>
+      <button type="button" id="mostrar"> Adicionar livros </button>
       <form id="form-livro" action="" method="post">
         <p>Insira as informações do seu livro</p>
         <ul>
@@ -28,7 +28,7 @@
             <input id="autor" type="text" name="autor" required />
           </li>
           <li>
-            <label for="n-paginas">
+            <label for="paginas">
               <span>Número de páginas</span>
               <strong><span aria-label="required">*</span></strong>
             </label>
@@ -47,7 +47,7 @@
             <span aria-label="required">*</span>
           </legend>
           <input id="sim-lido" type="radio" name="estado" value="1" required />
-          <label for="lido">Lido</label>
+          <label for="sim-lido">Lido</label>
           <input id="nao-lido" type="radio" name="estado" value="0" />
           <label for="nao-lido">Não lido</label>
         </fieldset>
@@ -55,7 +55,6 @@
           Novo livro
         </button>
       </form>
-      <
     </div>
     <div class="container-centro">
       <h1>Biblioteca</h1>

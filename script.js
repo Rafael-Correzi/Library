@@ -11,8 +11,11 @@ let corR;
 let corG;
 let corB;
 
+const mostrarForm = document.querySelector("#mostrar");
 const form = document.querySelector("#form-livro");
 
+form.style.display = "none";
+ 
 function Book(titulo, autor, paginas, lido) {
   this.titulo = titulo;
   this.autor = autor;
@@ -56,6 +59,10 @@ function traverseLib(tamanho = 0) {
     adicionarCor(i);
   }
 }
+
+mostrarForm.addEventListener("click", () => {
+  form.style.display == "none" ? form.style.display = "block" : form.style.display = "none";
+})
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
