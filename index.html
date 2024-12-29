@@ -1,52 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Library</title>
-  <script src="script.js" defer></script>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Biblioteca</h1>
-  <div class="estante">
-  </div>
-  <form id="form-livro" action="" method="post">
-    <p>Insira as informações do seu livro</p>
-    <ul>
-      <li>
-        <label for="titulo">
-          <span>Título</span>
-          <strong><span aria-label="required">*</span></strong>
-        </label>
-        <input id="titulo" type="text" name="titulo" required>
-      </li>
-      <li>
-        <label for="autor">
-          <span>Autor</span>
-          <strong><span aria-label="required">*</span></strong>
-        </label>
-        <input id="autor" type="text" name="autor" required>
-      </li>
-      <li>
-        <label for="n-paginas">
-          <span>Número de páginas</span>
-          <strong><span aria-label="required">*</span></strong>
-        </label>
-        <input id="paginas" type="number" name="paginas" max="10000" required>
-      </li>
-    </ul>
-    <fieldset>
-      <legend>Estado de leitura
-        <span aria-label="required">*</span>
-      </legend>
-        <input id="sim-lido" type="radio" name="estado" value="1" required>
-        <label for="lido">Lido</label>
-        <input id="nao-lido" type="radio" name="estado" value="0">
-        <label for="nao-lido">Não lido</label> 
-      </div>
-    </fieldset>
-  </form>
-  <button type="submit" form="form-livro" class="novo-livro">Novo livro</button>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container-lado" id="test">
+      <button type="button" class="mostrar"></button>
+      <form id="form-livro" action="" method="post">
+        <p>Insira as informações do seu livro</p>
+        <ul>
+          <li>
+            <label for="titulo">
+              <span>Título</span>
+              <strong><span aria-label="required">*</span></strong>
+            </label>
+            <input id="titulo" type="text" name="titulo" required />
+          </li>
+          <li>
+            <label for="autor">
+              <span>Autor</span>
+              <strong><span aria-label="required">*</span></strong>
+            </label>
+            <input id="autor" type="text" name="autor" required />
+          </li>
+          <li>
+            <label for="n-paginas">
+              <span>Número de páginas</span>
+              <strong><span aria-label="required">*</span></strong>
+            </label>
+            <input
+              id="paginas"
+              type="number"
+              name="paginas"
+              max="10000"
+              required
+            />
+          </li>
+        </ul>
+        <fieldset>
+          <legend>
+            Estado de leitura
+            <span aria-label="required">*</span>
+          </legend>
+          <input id="sim-lido" type="radio" name="estado" value="1" required />
+          <label for="lido">Lido</label>
+          <input id="nao-lido" type="radio" name="estado" value="0" />
+          <label for="nao-lido">Não lido</label>
+        </fieldset>
+        <button type="submit" form="form-livro" class="novo-livro">
+          Novo livro
+        </button>
+      </form>
+      <
+    </div>
+    <div class="container-centro">
+      <h1>Biblioteca</h1>
+      <div class="estante"></div>
+    </div>
+    <div class="container-lado"></div>
+  </body>
 </html>
