@@ -61,7 +61,7 @@ function traverseLib(tamanho = 0) {
 }
 
 mostrarForm.addEventListener("click", () => {
-  form.style.display == "none" ? form.style.display = "block" : form.style.display = "none";
+  form.style.display == "none" ? (form.style.display = "block", mostrarForm.innerText = "Esconder formulário") : (form.style.display = "none", mostrarForm.innerText = "Adicionar livros");
 })
 
 form.addEventListener("submit", (e) => {
