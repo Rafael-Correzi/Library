@@ -56,12 +56,15 @@ label {
 
 form {
   display: none;
+  margin: 0 30px;
+  width: 300px;
 }
 
 .container-lado {
   flex: 0 0 25%;
   background-color: #e1e9e9;
   box-shadow: 1px 1px 10px black;
+
   }
 
 
@@ -72,4 +75,58 @@ form {
   box-shadow: inset 1px 0px 10px black;
 }
 
+p {
+  color:  #533b3b;
+  font-weight: 700;
+}
 
+input {
+  background-color: #fff0;
+  border-radius: 5px;
+  border-color: #3f1111;
+  margin: 5px 0;
+}
+
+input[type="text"] {  
+  width: 350px;
+}
+
+li {
+  list-style: none;
+}
+
+span {
+  color:  #533b3b ;
+  font-weight: 700;
+}
+
+fieldset {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  color: #533b3b;
+  font-weight: 700;
+}
+
+ul {
+  padding: 0;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  background-color: #533b3b;
+  color: #e1e9e9;
+  margin-top: 20px;
+}
+
+#mostrar {
+  display: block;
+  width: 100px;
+  margin: 50px auto;
+}
+
+#novo-livro {
+  width: 70px;
+}
