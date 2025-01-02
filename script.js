@@ -3,6 +3,8 @@ const lib = [];
 const row = [];
 const div = [];
 const p = [];
+const a1 = [];
+const a2 = [];
 const buttonR = [];
 const buttonLido = [];
 
@@ -35,11 +37,17 @@ function traverseLib(tamanho = 0) {
     adicionarLinha(i);
     div[i] = document.createElement("div");
     div[i].setAttribute("class", "livros");
-    buttonR[i] = document.createElement("button");
-    buttonLido[i] = document.createElement("button");
-    buttonR[i].setAttribute("type", "button");
-    buttonLido[i].setAttribute("type", "button");
-    buttonR[i].textContent = "Remover";
+    a1[i] = document.createElement("a");
+    a1[i].setAttribute("alt", "Remover");
+    
+    a2[i] = document.createElement("a");
+    a2[i].setAttribute("alt", "Leitura");
+    buttonR[i] = document.createElement("img");
+    buttonLido[i] = document.createElement("img");
+    buttonR[i].setAttribute("src", "svgs/cross-svgrepo-com (1).svg");
+    buttonR[i].setAttribute("title", "Remover");
+    buttonR[i].classList.add("esconder");
+    buttonLido[i].classList.add("esconder");
     row[contadorLinha - 1].appendChild(div[i]);
     p[i] = [];
     for (j = 0; j < 4; j++) {
@@ -59,11 +67,18 @@ function traverseLib(tamanho = 0) {
       }
       else e.style.fontSize = "20px";
     });
-    buttonLido[i].textContent = lib[i].lido ? "Trocar para não lido" : "Trocar para lido";
+    lib[i].lido 
+    ? 
+    (buttonLido[i].setAttribute("src", "svgs/eye-slash-svgrepo-com.svg"), buttonLido[i].setAttribute("title", "Trocar para não lido"))
+    :
+    (buttonLido[i].setAttribute("src", "svgs/eye-svgrepo-com.svg"), buttonLido[i].setAttribute("title", "Trocar para lido"));
     div[i].appendChild(buttonLido[i]);
-    div[i].appendChild(buttonR[i]);
-    removerLivros(i);
+    div[i].appendChild(a1[i]);
+    div[i].appendChild(a2[i]);
+    a1[i].appendChild(buttonR[i]);
+    a2[i].appendChild(buttonLido[i]);
     trocarEstado(i);
+    removerLivros(i);
     adicionarCor(i);
     virarLivros(i);
   }
@@ -101,7 +116,12 @@ function trocarEstado(indice) {
   buttonLido[indice].addEventListener("click", () => {
     lib[indice].lido = lib[indice].lido ? 0 : 1;
     p[indice][3].textContent = lib[indice].lido ? "Lido" : "Não lido";
-  })
+    lib[indice].lido 
+    ? 
+    (buttonLido[indice].setAttribute("src", "svgs/eye-slash-svgrepo-com.svg"), buttonLido[indice].setAttribute("title", "Trocar para não lido"))
+    :
+    (buttonLido[indice].setAttribute("src", "svgs/eye-svgrepo-com.svg"), buttonLido[indice].setAttribute("title", "Trocar para lido"));
+  });
 }
 
 function adicionarCor(indice) {
@@ -118,6 +138,11 @@ function virarLivros(indice) {
   div[indice].addEventListener("mouseover", () => {
     div[indice].classList.add("aumentar");
     div[indice].classList.remove("diminuir");
+    buttonR[indice].classList.remove("esconder");
+    buttonR[indice].classList.add("botao");
+
+    buttonLido[indice].classList.remove("esconder");
+    buttonLido[indice].classList.add("botao-lido");
     p[indice].forEach((e) => {
       e.classList.add("info");
     })
@@ -126,6 +151,11 @@ function virarLivros(indice) {
   div[indice].addEventListener("mouseout", () => {
     div[indice].classList.add("diminuir");
     div[indice].classList.remove("aumentar");
+    buttonR[indice].classList.remove("botao");
+    buttonR[indice].classList.add("esconder");
+
+    buttonLido[indice].classList.remove("botao-lido");
+    buttonLido[indice].classList.add("esconder");
     p[indice].forEach((e) => {
       e.classList.remove("info");
     })
@@ -138,6 +168,12 @@ function adicionarLinha(indice) {
     row[contadorLinha].classList.add("row");
     estante.appendChild(row[contadorLinha]);
     contadorLinha++;
+  }
+}
+
+function trocarLido(indice) {
+  if (lib[indice].lido === 0){
+
   }
 }
 
