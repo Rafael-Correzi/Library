@@ -1,11 +1,12 @@
 const estante = document.querySelector(".estante");
 const lib = [];
+const row = [];
 const div = [];
 const p = [];
 const buttonR = [];
 const buttonLido = [];
 
-
+let contadorLinha = 0;
 let livro;
 let corR;
 let corG;
@@ -31,6 +32,7 @@ Book.prototype.addBookToLib = function (){
 function traverseLib(tamanho = 0) {
   //O parâmetro tamanho existe para quando a função for chamada no envio do formulário
   for (i = tamanho; i < lib.length; i++){
+    adicionarLinha(i);
     div[i] = document.createElement("div");
     div[i].setAttribute("class", "livros");
     buttonR[i] = document.createElement("button");
@@ -38,7 +40,7 @@ function traverseLib(tamanho = 0) {
     buttonR[i].setAttribute("type", "button");
     buttonLido[i].setAttribute("type", "button");
     buttonR[i].textContent = "Remover";
-    estante.appendChild(div[i]);
+    row[contadorLinha - 1].appendChild(div[i]);
     p[i] = [];
     for (j = 0; j < 4; j++) {
       //Porque cada livro tem quatro atributos
@@ -51,12 +53,19 @@ function traverseLib(tamanho = 0) {
     p[i][1].textContent = lib[i].autor;
     p[i][2].textContent = lib[i].paginas + " páginas";
     p[i][3].textContent = lib[i].lido ? "Lido" : "Não lido";
+    p[i].forEach((e) => {
+      if (e.textContent.length > 10) {
+        e.style.fontSize = `${(1 / e.textContent.length)* 200}px`;
+      }
+      else e.style.fontSize = "20px";
+    });
     buttonLido[i].textContent = lib[i].lido ? "Trocar para não lido" : "Trocar para lido";
     div[i].appendChild(buttonLido[i]);
     div[i].appendChild(buttonR[i]);
     removerLivros(i);
     trocarEstado(i);
     adicionarCor(i);
+    virarLivros(i);
   }
 }
 
@@ -105,9 +114,32 @@ function adicionarCor(indice) {
   div[indice].style.color = `rgb(${255-corR},${255-corG},${255-corB})`;
 }
 
+function virarLivros(indice) {
+  div[indice].addEventListener("mouseover", () => {
+    div[indice].classList.add("aumentar");
+    div[indice].classList.remove("diminuir");
+    p[indice].forEach((e) => {
+      e.classList.add("info");
+    })
+  });  
+   
+  div[indice].addEventListener("mouseout", () => {
+    div[indice].classList.add("diminuir");
+    div[indice].classList.remove("aumentar");
+    p[indice].forEach((e) => {
+      e.classList.remove("info");
+    })
+  });
+}
 
-
-
+function adicionarLinha(indice) {
+  if (indice % 8 === 0) {
+    row[contadorLinha] = document.createElement("div");
+    row[contadorLinha].classList.add("row");
+    estante.appendChild(row[contadorLinha]);
+    contadorLinha++;
+  }
+}
 
 traverseLib();
 

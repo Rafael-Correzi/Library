@@ -6,6 +6,7 @@
 
 }
 
+
 :root{
   font-family: 'montserratthin', system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; ;
 }
@@ -25,25 +26,27 @@ label {
 }
 
 .estante {
-  display: flex;
+  display: block;
+  height: 740px;
   width: 700px;
   background-color: #533b3b ;
   margin: 0 auto;
   border: solid 5px #3f1111;
   border-radius: 10px;
   flex-wrap: wrap;
+  overflow-y: auto;
 }
 
 .estante button {
-  display: none;
+  display: block;
 }
 
 .livros {
   display: inline-flex;
   flex-direction: column;
-  margin: 5px 2px;
-  flex-basis: 22%;
+  margin: 5px 3px;
   height: 220px;
+  min-width: 50px;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -129,4 +132,34 @@ button {
 
 #novo-livro {
   width: 70px;
+}
+
+.livros>p:nth-of-type(1){
+  writing-mode: vertical-rl;
+}
+
+.livros>p:nth-last-of-type(-n + 3) {
+  display: none;
+}
+
+.info.info.info {
+  display: block;
+  writing-mode: horizontal-tb;
+}
+
+.aumentar {
+  flex-basis: 22%;
+  max-width: 200px;
+  transition: all 120ms linear;
+  font-size: clamp(8px, 0.1vw, 20px);
+}  
+
+
+.diminuir {
+  flex-basis: 3.5%;
+  transition: all 120ms ease-in;
+}
+
+.row {
+  display: flex;
 }
