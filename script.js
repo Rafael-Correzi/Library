@@ -1,4 +1,3 @@
-const estante = document.querySelector(".estante");
 const lib = [];
 const row = [];
 const div = [];
@@ -7,15 +6,23 @@ const a1 = [];
 const a2 = [];
 const buttonR = [];
 const buttonLido = [];
+const span = [];
+
+const estante = document.querySelector(".estante");
+const mostrarForm = document.querySelector("#mostrar");
+const form = document.querySelector("#form-livro");
+const tituloInfo = document.querySelector("#titulo-info");
+const autorInfo = document.querySelector("#autor-info");
+const paginasInfo = document.querySelector("#paginas-info");
+const lidoInfo = document.querySelector("#lido-info");
 
 let contadorLinha = 0;
 let livro;
 let corR;
 let corG;
 let corB;
+let tempP;
 
-const mostrarForm = document.querySelector("#mostrar");
-const form = document.querySelector("#form-livro");
 
 form.style.display = "none";
  
@@ -77,10 +84,11 @@ function traverseLib(tamanho = 0) {
     div[i].appendChild(a2[i]);
     a1[i].appendChild(buttonR[i]);
     a2[i].appendChild(buttonLido[i]);
+    aplicarCor(i);
     trocarEstado(i);
     removerLivros(i);
-    adicionarCor(i);
     virarLivros(i);
+    mostrarInfo(i);
   }
 }
 
@@ -124,10 +132,13 @@ function trocarEstado(indice) {
   });
 }
 
-function adicionarCor(indice) {
+function adicionarCor() {
   corR = Math.floor(Math.random()*256 + 120);
   corG = Math.floor(Math.random()*256 + 120);
   corB = Math.floor(Math.random()*256 + 120);
+}
+
+function aplicarCor(indice) {
   div[indice].style.backgroundColor = `rgb(${corR},${corG},${corB})`;
   console.log(`rgb(${corR},${corG},${corB})`  );
   div[indice].style.borderColor = `rgb(${255-corR},${255-corG},${255-corB})`;
@@ -167,14 +178,34 @@ function adicionarLinha(indice) {
     row[contadorLinha] = document.createElement("div");
     row[contadorLinha].classList.add("row");
     estante.appendChild(row[contadorLinha]);
+    adicionarCor();
     contadorLinha++;
+
   }
 }
 
-function trocarLido(indice) {
-  if (lib[indice].lido === 0){
-
-  }
+function mostrarInfo(indice) {
+  div[indice].addEventListener("mouseover", () => {
+    tempP = document.createElement("p");
+    tempP.textContent = (lib[indice].titulo);
+    tituloInfo.appendChild(tempP);
+    tempP = document.createElement("p");
+    tempP.textContent = (lib[indice].autor);
+    autorInfo.appendChild(tempP);
+    tempP = document.createElement("p");
+    tempP.textContent = (lib[indice].paginas);
+    paginasInfo.appendChild(tempP);
+    tempP = document.createElement("p");
+    tempP.textContent = (lib[indice].lido ? "Lido" : "Não lido");
+    lidoInfo.appendChild(tempP);
+  })
+  div[indice].addEventListener("mouseout", () => {
+    tituloInfo.removeChild(tituloInfo.children[1]);
+    autorInfo.removeChild(autorInfo.children[1]);
+    paginasInfo.removeChild(paginasInfo.children[1]);
+    lidoInfo.removeChild(lidoInfo.children[1]);
+    
+  })
 }
 
 traverseLib();

@@ -192,3 +192,11 @@ a:hover {
   bottom: 0;
   left: 5px;
 }
+
+table {
+  border-spacing: 40px;
+}
+
+table p {
+  margin: 0;
+}
