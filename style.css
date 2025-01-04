@@ -204,13 +204,21 @@ a:hover {
 }
 
 table {
-  border-spacing: 40px;
+  border-spacing: 30px;
 }
 
 table p {
   margin: 0;
+  color: #3f1111;
+  font-weight: 700;
 }
 
 .outline {
   outline: solid 1px white;
+}
+
+th {
+  padding: 0;
+  height: 16px;
+  color: #3f1111;
 }
