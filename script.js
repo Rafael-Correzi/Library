@@ -133,16 +133,16 @@ function trocarEstado(indice) {
 }
 
 function adicionarCor() {
-  corR = Math.floor(Math.random()*256 + 120);
-  corG = Math.floor(Math.random()*256 + 120);
-  corB = Math.floor(Math.random()*256 + 120);
+  corR = Math.floor(Math.random()* (170 - 90) + 90);
+  corG = Math.floor(Math.random()* (120 - 65) + 65);
+  corB = Math.floor(Math.random() * (70 - 30) + 30);
 }
 
 function aplicarCor(indice) {
   div[indice].style.backgroundColor = `rgb(${corR},${corG},${corB})`;
   console.log(`rgb(${corR},${corG},${corB})`  );
-  div[indice].style.borderColor = `rgb(${255-corR},${255-corG},${255-corB})`;
-  div[indice].style.color = `rgb(${255-corR},${255-corG},${255-corB})`;
+  div[indice].style.borderColor = `rgb(${corR-50},${corG-15},${corB})`;
+  p[indice].forEach((e) => e.style.color = `rgb(${corR-50},${corG-15},${corB})`); 
 }
 
 function virarLivros(indice) {
