@@ -127,13 +127,15 @@ theHobbit.addBookToLib();
 theLordOfTheRings.addBookToLib();
 theSilmarillion.addBookToLib();
 
+
+//Isso é errado, mas remover os elementos com splice faria com que o resto do código necessitasse modificações
 function removerLivros(indice) {
   buttonR[indice].addEventListener("click", () => {
-    lib.splice(indice, 1);
-    buttonR.splice(indice, 1);
-    p.splice(indice, 1);
+    lib[indice] = null;
+    buttonR[indice] = null;
+    p[indice] = null;
     div[indice].remove();
-    div.splice(indice, 1);
+    div[indice] = null;
   })
 }
 
@@ -221,8 +223,12 @@ function mostrarInfo(indice) {
     else {
       removerNodo(4);
       adicionarNodo(indice);
-      div.forEach((e) => e.classList.remove("outline"));
-      }
+      div.forEach((e) => {
+        if (e !== null) { 
+          e.classList.remove("outline");
+        }
+      })
+    }
     
   })
 
@@ -230,11 +236,12 @@ function mostrarInfo(indice) {
 }
 
 function adicionarNodo(indice, n = 0) {
+  if (lib[indice] !== null) {
     tempP[0 + n].textContent = (lib[indice].titulo);
     tempP[1 + n].textContent = (lib[indice].autor);
     tempP[2 + n].textContent = (lib[indice].paginas);
     tempP[3 + n].textContent = (lib[indice].lido ? "Lido" : "Não lido");
-
+  }
 }
 
 function removerNodo(n = 0) {
