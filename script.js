@@ -7,6 +7,7 @@ const a2 = [];
 const buttonR = [];
 const buttonLido = [];
 const span = [];
+const tempP = [];
 
 const estante = document.querySelector(".estante");
 const mostrarForm = document.querySelector("#mostrar");
@@ -21,8 +22,20 @@ let livro;
 let corR;
 let corG;
 let corB;
-let tempP;
 
+for (i = 0; i < 8; i++) {
+  tempP[i] = document.createElement("p");
+  tempP[i].textContent = "";
+}
+
+tituloInfo.appendChild(tempP[0]);
+autorInfo.appendChild(tempP[1]);
+paginasInfo.appendChild(tempP[2]);
+lidoInfo.appendChild(tempP[3]);
+tituloInfo.appendChild(tempP[4]);
+autorInfo.appendChild(tempP[5]);
+paginasInfo.appendChild(tempP[6]);
+lidoInfo.appendChild(tempP[7]);
 
 form.style.display = "none";
  
@@ -186,41 +199,45 @@ function adicionarLinha(indice) {
 
 function mostrarInfo(indice) {
   div[indice].addEventListener("mouseover", () => {
-    tempP = document.createElement("p");
-    tempP.textContent = (lib[indice].titulo);
-    tituloInfo.appendChild(tempP);
-    tempP = document.createElement("p");
-    tempP.textContent = (lib[indice].autor);
-    autorInfo.appendChild(tempP);
-    tempP = document.createElement("p");
-    tempP.textContent = (lib[indice].paginas);
-    paginasInfo.appendChild(tempP);
-    tempP = document.createElement("p");
-    tempP.textContent = (lib[indice].lido ? "Lido" : "Não lido");
-    lidoInfo.appendChild(tempP);
+    if (tempP[4].textContent === "")
+      adicionarNodo(indice); 
   })
-  div[indice].addEventListener("mouseout", () => {
-    tituloInfo.removeChild(tituloInfo.children[1]);
-    autorInfo.removeChild(autorInfo.children[1]);
-    paginasInfo.removeChild(paginasInfo.children[1]);
-    lidoInfo.removeChild(lidoInfo.children[1]);
-    
+
+  div[indice].addEventListener("mouseleave", () => {
+      removerNodo();
   })
 
   div[indice].addEventListener("click", () => {
-    tempP = document.createElement("p");
-    tempP.textContent = (lib[indice].titulo);
-    tituloInfo.appendChild(tempP);
-    tempP = document.createElement("p");
-    tempP.textContent = (lib[indice].autor);
-    autorInfo.appendChild(tempP);
-    tempP = document.createElement("p");
-    tempP.textContent = (lib[indice].paginas);
-    paginasInfo.appendChild(tempP);
-    tempP = document.createElement("p");
-    tempP.textContent = (lib[indice].lido ? "Lido" : "Não lido");
-    lidoInfo.appendChild(tempP);
+      
+    if (tempP[4].textContent === "") {
+      removerNodo();
+      adicionarNodo(indice, 4);
+      div[indice].classList.add("outline");
+      }
+    else {
+      removerNodo(4);
+      adicionarNodo(indice);
+      div.forEach((e) => e.classList.remove("outline"));
+      }
+    
   })
+
+  
+}
+
+function adicionarNodo(indice, n = 0) {
+    tempP[0 + n].textContent = (lib[indice].titulo);
+    tempP[1 + n].textContent = (lib[indice].autor);
+    tempP[2 + n].textContent = (lib[indice].paginas);
+    tempP[3 + n].textContent = (lib[indice].lido ? "Lido" : "Não lido");
+
+}
+
+function removerNodo(n = 0) {
+  tempP[0 + n].textContent = "";
+  tempP[1 + n].textContent = "";
+  tempP[2 + n].textContent = "";
+  tempP[3 + n].textContent = "";
 }
 
 traverseLib();

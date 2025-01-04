@@ -18,6 +18,10 @@ body {
   width: 100vw;
 }
 
+.display-none {
+  display: none;
+}
+
 h1 {
   font-size: 50px;
   color: #3f1111;
@@ -59,6 +63,7 @@ label {
   border-style: solid;
   font-weight: 700;
   flex-basis: 3.5%;
+  cursor: pointer;
 }
 
 form {
@@ -204,4 +209,8 @@ table {
 
 table p {
   margin: 0;
+}
+
+.outline {
+  outline: solid 1px white;
 }
