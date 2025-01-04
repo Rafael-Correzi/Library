@@ -206,6 +206,21 @@ function mostrarInfo(indice) {
     lidoInfo.removeChild(lidoInfo.children[1]);
     
   })
+
+  div[indice].addEventListener("click", () => {
+    tempP = document.createElement("p");
+    tempP.textContent = (lib[indice].titulo);
+    tituloInfo.appendChild(tempP);
+    tempP = document.createElement("p");
+    tempP.textContent = (lib[indice].autor);
+    autorInfo.appendChild(tempP);
+    tempP = document.createElement("p");
+    tempP.textContent = (lib[indice].paginas);
+    paginasInfo.appendChild(tempP);
+    tempP = document.createElement("p");
+    tempP.textContent = (lib[indice].lido ? "Lido" : "Não lido");
+    lidoInfo.appendChild(tempP);
+  })
 }
 
 traverseLib();

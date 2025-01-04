@@ -17,10 +17,12 @@ body {
   height: 100vh;
   width: 100vw;
 }
+
 h1 {
   font-size: 50px;
   text-align: center;
 }
+
 label {
   display: block;
 }
@@ -68,7 +70,8 @@ form {
   flex: 0 0 25%;
   background-color: #e1e9e9;
   box-shadow: 1px 1px 10px black;
-
+  background-image: url(svgs/xadrez.svg);
+  background-size: 100px;
   }
 
 
@@ -77,6 +80,8 @@ form {
   flex: 0 0 50%;
   background-color: #f5f8f8;
   box-shadow: inset 1px 0px 10px black;
+  background-image: url(svgs/losango.svg);
+  background-size: 15px;
 }
 
 p {
