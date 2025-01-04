@@ -82,10 +82,10 @@ function traverseLib(tamanho = 0) {
     p[i][2].textContent = lib[i].paginas + " páginas";
     p[i][3].textContent = lib[i].lido ? "Lido" : "Não lido";
     p[i].forEach((e) => {
-      if (e.textContent.length > 10) {
-        e.style.fontSize = `${(1 / e.textContent.length)* 200}px`;
+      if (e.textContent.length > 15) {
+        e.style.fontSize = `${(1 / e.textContent.length)* 260}px`;
       }
-      else e.style.fontSize = "20px";
+      else e.style.fontSize = "18px";
     });
     lib[i].lido 
     ? 
@@ -121,7 +121,11 @@ form.addEventListener("submit", (e) => {
 } )
 
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, 0);
+const theLordOfTheRings = new Book("The Lord of the Rings", "J.R.R. Tolkien", 1077, 0);
+const theSilmarillion = new Book("The Silmarillion", "J.R.R. Tolkien", 365, 0);
 theHobbit.addBookToLib();
+theLordOfTheRings.addBookToLib();
+theSilmarillion.addBookToLib();
 
 function removerLivros(indice) {
   buttonR[indice].addEventListener("click", () => {
