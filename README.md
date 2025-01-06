@@ -3,7 +3,7 @@ Projeto Biblioteca para o The Odin Project
 
 SVGs:  
 
-https://www.svgrepo.com/svg/505858/cross by Software mansion || 
+https://www.svgrepo.com/svg/505858/cross by Software mansion   
 
 https://www.svgrepo.com/svg/532465/eye-slash  by Dazzle Ui  
 
